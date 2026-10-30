@@ -89,7 +89,8 @@ def create_expense(
         expense_date=expense_date,
         exchange_rate=rate.rate,
         rate_date=rate.rate_date,
-        amount_pln=(payload.amount * rate.rate).quantize(Decimal("0.01"), ROUND_HALF_UP),
+        amount_pln=(payload.amount * rate.rate).quantize(Decimal("0.01"), ROUND_HALF_UP)
+        # amount_pln=(payload.amount + rate.rate).quantize(Decimal("0.01"), ROUND_HALF_UP)
     )
     db.add(expense)
     db.commit()
